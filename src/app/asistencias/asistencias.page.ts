@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AsistenciaService } from './asistencia.service'
+
 
 @Component({
   selector: 'app-asistencias',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsistenciasPage implements OnInit {
 
-  constructor() { }
+  registroAsistencia =[];
+
+  constructor(private AsistenciaService : AsistenciaService) { }
 
   ngOnInit() {
+    this.registroAsistencia=this.AsistenciaService.getAsistencia();
   }
 
 }
