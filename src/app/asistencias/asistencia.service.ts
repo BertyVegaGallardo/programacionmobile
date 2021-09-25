@@ -52,7 +52,7 @@ export class AsistenciaService {
   }
 
   //agregar registro 
-  addRegistro(id:string, fecha:string, asignatura :string, profesor:string, hora: string)
+  addRegistro(fecha:string, asignatura :string, profesor:string, hora: string)
   {
     this.registroAsistencia.push(
       {
