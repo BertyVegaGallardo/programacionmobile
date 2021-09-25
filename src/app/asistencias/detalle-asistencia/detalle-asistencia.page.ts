@@ -12,15 +12,16 @@ export class DetalleAsistenciaPage implements OnInit {
 asistencia : Asistencia;
 
   constructor(private activatedRoute: ActivatedRoute, 
-    private asistenciaService: AsistenciaService) { }
+    private AsistenciaService: AsistenciaService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(
-      paramMap => {
-        const idRegistroRecibido=paramMap.get('registroId');
-        this.asistencia = this.asistenciaService.getDetalle('idRegistroRecibido');
-      })
-    
+      //de la ruta activa se toma el contactoid declarado en path en app-routing el numero despues del / en el link
+      paramMap=>{
+        const idContactoRecibido=paramMap.get('asistenciaId'); //recupero el parametro y lo dejo en una constante
+        this.asistencia=this.AsistenciaService.getDetalle(idContactoRecibido); //crear en el objeto contacto declarado arriba los detalles de contacto recuperados con la constante 
+      }
+    );
 
 
   }

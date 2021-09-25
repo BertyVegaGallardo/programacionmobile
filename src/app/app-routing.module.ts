@@ -23,7 +23,7 @@ const routes: Routes = [
         loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
       },
       {
-        path: ':registroId',
+        path: ':asistenciaId',
         loadChildren: () => import('./asistencias/detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
       },  
     ]

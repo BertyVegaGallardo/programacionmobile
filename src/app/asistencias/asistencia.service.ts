@@ -44,10 +44,10 @@ export class AsistenciaService {
     return [...this.registroAsistencia];
   }
   //para retornar detalles de asistencia segun id solicitado
-  getDetalle(registroId :string)
+  getDetalle(asistenciaId :string)
   {
     return{
-      ...this.registroAsistencia.find(Asistencia => {return Asistencia.id === registroId})
+      ...this.registroAsistencia.find(asistencia => {return asistencia.id === asistenciaId})
     }
   }
 
