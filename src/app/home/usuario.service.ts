@@ -7,7 +7,7 @@ export class UsuarioService {
 
   listaUsuario: Usuario[]=[
     {
-      user: 'mmonte',
+      user: 'bvega',
       password: '123456'
     },
     {
@@ -23,10 +23,11 @@ export class UsuarioService {
             ...this.listaUsuario.find(usuario => {return usuario.user === usuarioInput })
            }
     }
-  addUsuario(user: string, password: string)
+  addUsuario( user: string, password: string)
   {
     this.listaUsuario.push(
       {
+       
         user,
         password
       }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute , Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  user: '';
 
-  ngOnInit() {
-  }
+    constructor(private activatedRoute: ActivatedRoute, private router : Router){}
+
+    ngOnInit() {
+      this.activatedRoute.queryParams.subscribe(params => {
+          this.user = this.router.getCurrentNavigation().extras.state.user.usuario; 
+      });
+    }
+
+    
 
 }

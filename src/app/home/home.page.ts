@@ -10,10 +10,7 @@ import { Usuario } from './usuario.model';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  /**
-   * Se genera el modelo user con dos claves
-   * cada clave tiene su valor inicial
-   */
+
   user={
     usuario:'',
     password:''
@@ -49,11 +46,7 @@ export class HomePage implements OnInit {
     }
 
   }
-   /**
-    *    * Muestra un toast al usuario
-   * @param message Mensaje a presentar al usuario
-   * @param duration Duración el toast, este es opcional
-   */
+ 
     async presentToast(message: string, duration?: number){
       const toast = await this.toastController.create(
         {
