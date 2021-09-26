@@ -1,8 +1,8 @@
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from './registra-usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { Usuario } from './usuario.model';
+import { Usuario } from './registra-usuario/usuario.model';
 
 @Component({
   selector: 'app-home',
