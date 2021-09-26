@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import {AsistenciaService} from '../asistencia.service';
+import { UsuarioService} from './usuario.service';
 
 @Component({
-  selector: 'app-registro-asistencia',
-  templateUrl: './registro-asistencia.page.html',
-  styleUrls: ['./registro-asistencia.page.scss'],
+  selector: 'app-registra-usuario',
+  templateUrl: './registra-usuario.page.html',
+  styleUrls: ['./registra-usuario.page.scss'],
 })
-export class RegistroAsistenciaPage implements OnInit {
+export class RegistraUsuarioPage implements OnInit {
+ usuario={
+   user: '',
+   password: '',
+   pregunta: '',
+   respuesta: ''
 
-  asistencia = {
-    fecha: '',
-    hora: ''  ,
-    profesor: '',
-    asignatura: '',
-     
   };
 
   campo: string;
-
-  constructor( private router : Router, public toastController : ToastController, 
-    private asistenciaService : AsistenciaService) { }
+  constructor(private router: Router,public toastController: ToastController,
+    private usuarioService: UsuarioService ) { }
 
   ngOnInit() {
   }
 
-  registrarAsistencia(){
+  registrarUsuario(){
     const navigationExtras: NavigationExtras = {
       state: {
-        asistencia: this.asistencia // Al estado le asignamos un objeto con clave y valor
+        user: this.usuario // Al estado le asignamos un objeto con clave y valor
       }
     };
-    
-    if(this.validateModel(this.asistencia)){
-        this.asistenciaService.addRegistro(this.asistencia.fecha.valueOf(),
-          this.asistencia.hora.valueOf(),
-          this.asistencia.profesor.valueOf(),
-          this.asistencia.asignatura.valueOf());
-          this.presentToast('Datos registrados correctamente');
-          this.router.navigate(['/asistencias'],navigationExtras);//si se cumplen las validaciones muestra el mensaje y redirecciona a asistencias
+    // Se declara e instancia un elemento de tipo NavigationExtras
+    if(this.validateModel(this.usuario)){
+        this.usuarioService.addUsuario(this.usuario.user.valueOf(),
+          this.usuario.password.valueOf(),
+          this.usuario.pregunta.valueOf(),
+          this.usuario.respuesta.valueOf());
+          this.presentToast('Usuario creado correctamente');
+          this.router.navigate(['/home'],navigationExtras);//si se cumplen las validaciones muestra el mensaje y redirecciona a login
     }
     else
     {
@@ -48,7 +46,7 @@ export class RegistroAsistenciaPage implements OnInit {
 
   }
    /**
-   * Muestra un toast al usuario
+   * Muestra un toast al usuario (mensaje flotante)
    * @param message Mensaje a presentar al usuario
    * @param duration Duración el toast, este es opcional
    */
@@ -66,7 +64,7 @@ export class RegistroAsistenciaPage implements OnInit {
    * campos del html mediante su modelo
    */
     validateModel(model: any){
-    // Recorro todas las entradas que me entrega Object entries y obtengo su clave, valor
+    // Recorro todas las entradas que me entrega Object.entries y obtengo su valor
     for (var [key, value] of Object.entries(model)) {
       // Si un valor es "" se retornara false y se avisara de lo faltante
       if (value==='') {
@@ -78,4 +76,5 @@ export class RegistroAsistenciaPage implements OnInit {
     }
     return true;
   }
+
 }

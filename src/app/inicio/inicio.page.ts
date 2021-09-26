@@ -14,7 +14,7 @@ export class InicioPage implements OnInit {
 
     ngOnInit() {
       this.activatedRoute.queryParams.subscribe(params => {
-          this.user = this.router.getCurrentNavigation().extras.state.user.usuario; 
+          this.user = this.router.getCurrentNavigation().extras.state.user.usuario;
       });
     }
 

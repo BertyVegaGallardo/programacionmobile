@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalle-asistencia</ion-title>
+    <ion-title>Fecha de registro:{{asistencia.fecha}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref='/inicio'></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,19 @@
 </ion-header>
 
 <ion-content>
+  <ion-content>
+    <ion-grid> 
+     <ion-item> 
+       <ion-label>Asignatura: {{asistencia.asignatura}} </ion-label>
+     </ion-item>
+     <ion-item>
+      <ion-label>Profesor: {{asistencia.profesor}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora de registro: {{asistencia.hora}} </ion-label>
+    </ion-item>
+    </ion-grid>
+ </ion-content>
+
 
 </ion-content>
