@@ -12,7 +12,7 @@ export class AsistenciaService {
       fecha: '24/09/2021',
       hora:'19:05',
       asignatura: 'Programación de aplicaciones moviles',
-      profesor: 'Marcelo Monte'  
+      profesor: 'Marcelo Montecinos'  
     },
     {
       id: '2',

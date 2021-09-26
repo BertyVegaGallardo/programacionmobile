@@ -1,20 +1,20 @@
 ion-toolbar {
-  --background: yellow;
+  --background: rgb(240, 207, 22);
 
   ion-button {
-    text-transform: initial;
+    text-transform: rgb(0, 0, 0);
   }
 }
 
 h2{ 
   font-weight: 600;
   font-size: 18px;
-  color: #25c07f;
+  color: #7700d8;
 
 }
 
 ion-content {
-  --background: #211872;
+  --background: #ffffff;
 
   #header {
     display: flex;

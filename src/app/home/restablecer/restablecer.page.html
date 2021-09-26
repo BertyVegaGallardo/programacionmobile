@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Volver atrás</ion-title>
+    <ion-title>Restablecer Contraseña</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref='/home'></ion-back-button>
     </ion-buttons>
@@ -11,7 +11,7 @@
 <ion-card>
     
     <ion-card-header  >
-      <h3 class="title">Restablesca su contraseña</h3>
+      <h3 class="title">Ingrese datos de usuario</h3>
     </ion-card-header>
 
 </ion-card>
@@ -33,12 +33,9 @@
   <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
   <ion-input type="password" [(ngModel)]="user.password"></ion-input> 
 </ion-item>
-
-
-
-</ion-card-content>
-<ion-col>
-         
-  <ion-button expand="full" (click)="restablecer()">Restablescer Contraseña </ion-button>
+<ion-col>  
+  <ion-button expand="block" (click)="restablecer()">Restablescer Contraseña </ion-button>
 </ion-col>
-  </ion-content>
+</ion-card-content>
+
+</ion-content>
