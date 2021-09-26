@@ -18,8 +18,8 @@ asistencia : Asistencia;
     this.activatedRoute.paramMap.subscribe(
       //de la ruta activa se toma el contactoid declarado en path en app-routing el numero despues del / en el link
       paramMap=>{
-        const idContactoRecibido=paramMap.get('asistenciaId'); //recupero el parametro y lo dejo en una constante
-        this.asistencia=this.AsistenciaService.getDetalle(idContactoRecibido); //crear en el objeto contacto declarado arriba los detalles de contacto recuperados con la constante 
+        const idAsistenciaRecibido=paramMap.get('asistenciaId'); //recupero el parametro y lo dejo en una constante
+        this.asistencia=this.AsistenciaService.getDetalle(idAsistenciaRecibido); //crear en el objeto contacto declarado arriba los detalles de contacto recuperados con la constante 
       }
     );
 
