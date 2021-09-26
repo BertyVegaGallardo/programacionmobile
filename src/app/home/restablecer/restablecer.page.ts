@@ -17,7 +17,7 @@ export class RestablecerPage implements OnInit {
     respuesta : ''
     
   };
-   usuarioServices: Usuario;
+   usuario: Usuario;
      //variable para mostrar el campo faltante
    campo: string;
 
@@ -36,17 +36,19 @@ export class RestablecerPage implements OnInit {
       }
     };
     if(this.validateModel(this.user)){
-      this.usuarioServices=this.usuarioService.getUsuario(this.user.usuario);
+      this.usuario=this.usuarioService.getUsuario(this.user.usuario);
       console.log(this.usuarioService.getUsuario(this.user.usuario))
-      console.log(this.usuarioServices.password)
-      if(this.usuarioServices.respuesta === this.user.respuesta){
-        this.usuarioServices.password = this.user.password;
-        //this.usuarioService.modUsuario(this.usuarioServiceS.user, this.user.password)
-        console.log(this.usuarioServices.password)
-        console.log(this.usuarioService.getUsuario(this.user.usuario))
-        console.log(this.usuarioServices)
-        this.presentToast('Contraseña modificada');
+      console.log(this.usuario.password)
+      if(this.usuario.respuesta === this.user.respuesta){
+        let mod : boolean;
+        mod=this.usuarioService.modContrasena(this.usuario.user,this.user.password);
+        if(mod){
+          this.presentToast('Contraseña modificada');
+          console.log(this.usuarioService.getUsuario(this.user.usuario))
         this.router.navigate(['/home'],navigationExtras); // navegamos hacia el inicio y enviamos información adicional
+        }else{
+          this.presentToast('Error al modificar');
+        }  
       }else{
         this.presentToast('Pregunta o respuesta no validos');
       }
@@ -55,6 +57,7 @@ export class RestablecerPage implements OnInit {
     {
       this.presentToast('Falta completar: '+this.campo);
     }
+
 
   }
  

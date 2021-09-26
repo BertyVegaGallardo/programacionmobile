@@ -38,11 +38,18 @@ export class UsuarioService {
       }
     );   
   }
-   modUsuario( usuario: string, password: string)
-   {
-     var nuevaPass = this.getUsuario(usuario);
-     nuevaPass.password = password;
-   }
+  modContrasena(usuarioRecuperaInput: string,nuevaClaveInput: string){
+    let salida: boolean;
+    salida=false;
+    for (var i = 0; i < this.listaUsuario.length; i++) {
+      if (this.listaUsuario[i].user===usuarioRecuperaInput){
+        this.listaUsuario[i].password = nuevaClaveInput;
+        salida=true;
+      }      
+     }
+     return salida
+    
+  }
 
 
 

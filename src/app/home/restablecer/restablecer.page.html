@@ -20,18 +20,22 @@
   <ion-label position="floating">Usuario</ion-label>
   <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
   <ion-input type="text" [(ngModel)]="user.usuario"></ion-input>
+
   <ion-label position="floating">Pregunta</ion-label>
   <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
   <ion-input type="text" [(ngModel)]="user.pregunta"></ion-input>
+
   <ion-label position="floating">Respuesta</ion-label>
   <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
   <ion-input type="text" [(ngModel)]="user.respuesta"></ion-input> 
+
+  <ion-label position="floating">Nueva Contraseña</ion-label>
+  <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+  <ion-input type="password" [(ngModel)]="user.password"></ion-input> 
 </ion-item>
-<ion-item>
-<ion-label position="floating">Nueva Contraseña</ion-label>
-<!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
-<ion-input type="text" [(ngModel)]="user.password"></ion-input> 
-</ion-item>
+
+
+
 </ion-card-content>
 <ion-col>
          
