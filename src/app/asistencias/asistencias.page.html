@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lista de asistencia</ion-title>
+    <ion-title>Volver atrás</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref='/inicio'></ion-back-button>
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]='true'>
+<ion-content [fullscreen]="true">
+<ion-card-header> <!--componente de titulo -->
+  <ion-title>Registro de asistencia </ion-title>
+</ion-card-header>
+
   <ion-list *ngFor="let asistencia of registroAsistencia">
     <ion-item [routerLink]="['./',asistencia.id]">
-    <ion-label>Fecha: {{asistencia.fecha}}</ion-label>
+      <ion-label>Fecha: {{asistencia.fecha}}</ion-label>
     </ion-item>
   </ion-list>
-
 </ion-content>
