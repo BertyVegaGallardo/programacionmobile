@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AsistenciaService } from './asistencia.service'
+import { AsistenciaService } from './asistencia.service';
+
 
 
 @Component({
@@ -10,11 +11,20 @@ import { AsistenciaService } from './asistencia.service'
 export class AsistenciasPage implements OnInit {
 
   registroAsistencia =[];
+  asistenciaService : AsistenciaService;
 
-  constructor(private AsistenciaService : AsistenciaService) { }
+  constructor( AsistenciaService : AsistenciaService) { 
+    this.asistenciaService = AsistenciaService;
+  }
 
   ngOnInit() {
-    this.registroAsistencia=this.AsistenciaService.getAsistencia();
   }
+
+  ionViewWillEnter() {
+    alert("XXX");
+   this.registroAsistencia=this.asistenciaService.getRegistro();
+  }
+
+
 
 }

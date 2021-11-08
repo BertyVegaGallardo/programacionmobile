@@ -1,5 +1,7 @@
 {
   "name": "RegistrApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

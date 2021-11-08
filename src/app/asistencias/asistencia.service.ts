@@ -1,67 +1,77 @@
 import { Injectable } from '@angular/core';
 import {Asistencia} from './asistencia.model'
+import { DataBaseService } from '../servicios/data-base.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsistenciaService {
 
-  registroAsistencia : Asistencia [] = [
-    {
-      id: '1',
-      fecha: '24/09/2021',
-      hora:'19:05',
-      asignatura: 'Programación de aplicaciones moviles',
-      profesor: 'Marcelo Montecinos'  
-    },
-    {
-      id: '2',
-      fecha: '23/09/2021',
-      hora:'20:25',
-      asignatura: 'Estadistica descriptiva',
-      profesor: 'Patricio Muñoz'
-    },
-    {
-      id: '3',
-      fecha: '22/09/2021',
-      hora:'21:19',
-      asignatura: 'Arquitectura de software',
-      profesor: 'Guillermo Pinto'
-    },
-    {
-      id: '3',
-      fecha: '21/09/2021',
-      hora:'20:37',
-      asignatura: 'Ingles elemental',
-      profesor: 'Ramon Pozo'
-    }
 
-  ]
+  public registroAsistencia : Asistencia [] = [];
+  asistencia: Asistencia;
+  db: DataBaseService;
 
-  constructor() { }
+  constructor(db :DataBaseService) {
+    this.db=db;
+    alert('xxxx-0 ');
+   }
+
+   getDatabaseState()
+   {
+     return this.db.getDatabaseState();
+   }
+
   //para mostrar registro de asistencia
-  getAsistencia(){
-    return [...this.registroAsistencia];
+  getRegistro(){
+    alert('xxxx-6 ');
+    this.db.getDatabaseState().subscribe(rdy => {
+      if(rdy){
+        this.db.getRegistro().subscribe(asistencias => {
+          this.registroAsistencia = asistencias;
+        });
+      }
+    });
+    return this.registroAsistencia;
   }
   //para retornar detalles de asistencia segun id solicitado
-  getDetalle(asistenciaId :string)
+  getDetalle(asistenciaId :string): Promise<Asistencia> 
   {
-    return{
-      ...this.registroAsistencia.find(asistencia => {return asistencia.id === asistenciaId})
-    }
+    alert('xxxx-7');
+    return this.db.getAsistencia(asistenciaId).then(data => {
+      this.asistencia = data;
+      alert('xxxx-8');
+      return this.asistencia;
+    });
+
   }
 
   //agregar registro 
   addRegistro(fecha:string, asignatura :string, profesor:string, hora: string)
   {
-    this.registroAsistencia.push(
-      {
-        id: this.registroAsistencia.length+1+'',
-        fecha,
-        asignatura,
-        profesor,
-        hora
+    this.db.getDatabaseState().subscribe(rdy => {
+      if(rdy){
+        this.db.addAsistencia(fecha, asignatura, profesor, hora);
       }
-    );
+    });
+  }
+
+  updateRegistro(id: string, fecha:string, asignatura: string, profesor:string, hora:string)
+  {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if(rdy){
+        console.log('Modificar asistencia');
+        this.db.updateAsistencia(fecha, asignatura,profesor,hora,id);
+      }
+    });
+  }
+
+  deleteRegistro(id:string)
+  {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if(rdy){
+        this.db.deleteAsistencia(id);
+      }
+    });
   }
 }
