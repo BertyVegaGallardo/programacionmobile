@@ -2,25 +2,42 @@
   <ion-toolbar>
     <ion-title>Fecha de registro:{{asistencia.fecha}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref='/inicio'></ion-back-button>
+      <ion-back-button defaultHref='/inicio'>Volver sin cambios</ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-content>
-    <ion-grid> 
-     <ion-item> 
-       <ion-label>Asignatura: {{asistencia.asignatura}} </ion-label>
-     </ion-item>
-     <ion-item>
-      <ion-label>Profesor: {{asistencia.profesor}} </ion-label>
+<ion-content [fullscreen]="true" class='card-content'>
+
+  <ion-card-header>
+    <ion-title>Detalles de Registro</ion-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="full">
+      <ion-input type="hidden" [(ngModel)]="asistencia.id" ></ion-input>
+      <ion-label position="floating">Asignatura</ion-label>
+      <ion-input type="text" [(ngModel)]="asistencia.asignatura"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Hora de registro: {{asistencia.hora}} </ion-label>
+    <ion-item lines="full">
+      <ion-input type="hidden" [(ngModel)]="asistencia.id" ></ion-input>
+      <ion-label position="floating">Profesor</ion-label>
+      <ion-input type="text" [(ngModel)]="asistencia.profesor"></ion-input>
     </ion-item>
-    </ion-grid>
- </ion-content>
+    <ion-item lines="full">
+      <ion-input type="hidden" [(ngModel)]="asistencia.id" ></ion-input>
+      <ion-label position="floating">Hora</ion-label>
+      <ion-input type="text" [(ngModel)]="asistencia.hora"></ion-input>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <ion-button expand="full" (click)="modificarRegistro()">Guardar Cambios</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button color="danger" (click)="borrarRegistro()">Borrar Registro</ion-button>
+    </ion-col>
+  </ion-row>
 
 
 </ion-content>

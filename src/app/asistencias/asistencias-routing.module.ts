@@ -13,8 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./registro-asistencia/registro-asistencia.module').then( m => m.RegistroAsistenciaPageModule)
   },
   {
-    path: 'detalle-asistencia',
-    loadChildren: () => import('./detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
+    path: 'detalle-asistencias',
+    loadChildren: () => import('../asistencias/detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
   }
 ];
 

@@ -23,7 +23,6 @@ export class HomePage implements OnInit {
     private usuarioService: UsuarioService) { } // Se debe instanciar
 
   ngOnInit(){
-  
   }
   ingresar(){
     // Se declara e instancia un elemento de tipo NavigationExtras
