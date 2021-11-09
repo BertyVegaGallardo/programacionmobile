@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Asistencia} from './asistencia.model'
-import { DataBaseService } from '../servicios/data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 
 @Injectable({
   providedIn: 'root'
