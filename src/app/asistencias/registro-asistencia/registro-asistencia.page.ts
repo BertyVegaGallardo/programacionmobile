@@ -18,10 +18,13 @@ export class RegistroAsistenciaPage implements OnInit {
      
   };
 
+  asistenciaService: AsistenciaService; 
   campo: string;
 
   constructor( private router : Router, public toastController : ToastController, 
-    private asistenciaService : AsistenciaService) { }
+    asistenciaService : AsistenciaService) { 
+      this.asistenciaService= asistenciaService;
+    }
 
   ngOnInit() {
   }
