@@ -38,9 +38,9 @@ export class RegistroAsistenciaPage implements OnInit {
     
     if(this.validateModel(this.asistencia)){
         this.asistenciaService.addRegistro(this.asistencia.fecha.valueOf(),
-          this.asistencia.hora.valueOf(),
+          this.asistencia.asignatura.valueOf(),
           this.asistencia.profesor.valueOf(),
-          this.asistencia.asignatura.valueOf());
+          this.asistencia.hora.valueOf());
           this.presentToast('Datos registrados correctamente');
           this.router.navigate(['/asistencias'],navigationExtras);//si se cumplen las validaciones muestra el mensaje y redirecciona a asistencias
     }
