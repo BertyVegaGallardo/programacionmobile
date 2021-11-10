@@ -3,7 +3,6 @@ import {RestService} from '../services/rest.service';
 import{Observable} from 'rxjs';
 
 
-
 @Component({
   selector: 'app-list-profe',
   templateUrl: './list-profe.page.html',
@@ -20,5 +19,9 @@ export class ListProfePage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter() {
+    console.log('volver a cargar pagina')
+   this.datosObservable=this.apirest.getDatos();
+  }
 
 }

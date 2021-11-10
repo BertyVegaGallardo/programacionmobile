@@ -21,7 +21,7 @@ export class AsistenciasPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    alert("XXX");
+    console.log("XXX");
    this.registroAsistencia=this.asistenciaService.getRegistro();
   }
 
