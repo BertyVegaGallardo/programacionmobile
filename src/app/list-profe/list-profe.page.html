@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contacta a tus profesores</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title>Listado de Profesores</ion-title>
+  <ion-list *ngFor="let dato of datosObservable | async">
+    <ion-item  [routerLink]="['./', dato.id]">
+      <ion-card>
+        <ion-label><h1>{{ dato.id}} {{ dato.name}}</h1></ion-label>
+        <ion-label><h2>Email: {{dato.email}}</h2></ion-label>
+        <ion-label><h2>Telefono: {{dato.phone}}</h2></ion-label>
+      </ion-card>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

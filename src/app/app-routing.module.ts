@@ -17,12 +17,22 @@ const routes: Routes = [
   },
   {
     path: 'asistencias',
+    children:[
+      {
+        path: '',
         loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
       },
+      {
+        path: ':asistenciaId',
+        loadChildren: () => import('./asistencias/detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
+      },  
+    ]
+  },
   {
-    path: 'detalle/:asistenciaId',
-    loadChildren: () => import('./detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
-  },  
+    path: 'list-profe',
+        loadChildren: () => import('./list-profe/list-profe.module').then( m => m.ListProfePageModule)
+
+  },
 
 ];
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Asistencia} from './asistencia.model'
-import { DataBaseService } from '../servicios/data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AsistenciaService {
   
   constructor(db :DataBaseService) {
     this.db=db;
-    alert('xxxx-0 ');
+    console.log('xxxx-0 ');
    }
 
    getDatabaseState()
@@ -24,7 +24,7 @@ export class AsistenciaService {
 
   //para mostrar registro de asistencia
   getRegistro(){
-    alert('xxxx-6 ');
+    console.log('xxxx-6 ');
     this.db.getDatabaseState().subscribe(rdy => {
       if(rdy){
         this.db.getRegistro().subscribe(asistencias => {
@@ -37,10 +37,10 @@ export class AsistenciaService {
   //para retornar detalles de asistencia segun id solicitado
   getDetalle(asistenciaId :string): Promise<Asistencia> 
   {
-    alert('xxxx-7');
+    console.log('xxxx-7 ');
     return this.db.getAsistencia(asistenciaId).then(data => {
       this.asistencia = data;
-      alert('xxxx-8');
+      console.log('xxxx-8 ');
       return this.asistencia;
     });
 
