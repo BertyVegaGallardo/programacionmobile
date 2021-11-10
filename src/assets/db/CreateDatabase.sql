@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS asistencia(
 );
 
 
+
+
 INSERT INTO asistencia
     ( fecha, asignatura, profesor, hora) VALUES 
     ('24/09/2021','Programación de aplicaciones moviles','Marcelo Montecinos','19:01');
@@ -22,7 +24,6 @@ INSERT INTO asistencia
 INSERT INTO asistencia
     ( fecha, asignatura, profesor, hora) VALUES 
     ('21/09/2021','Ingles elemental','Ramon Pozo','20:31');
-
 
 
 
