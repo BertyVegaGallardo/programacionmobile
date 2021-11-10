@@ -27,7 +27,7 @@ export class DataBaseService {
   constructor(http: HttpClient,plataforma: Platform,sqlite: SQLite, sqlPorter: SQLitePorter) 
   { 
         //Detectar Plataforma
-        alert('xxxx-01');
+        console.log('xxxx-01 ');
         plataforma.ready()
           .then(() => {
              this.sqlite=sqlite;
@@ -40,10 +40,10 @@ export class DataBaseService {
                createFromLocation: 1
              })
              .then((db: SQLiteObject) => {
-              alert('xxxx-2');
+              console.log('xxxx-2');
                this.dataBase = db;
                this.crearTablas();
-               alert('xxxx-1 ');
+               console.log('xxxx-1 ');
                }).catch(e =>{
                  alert('Error conexión'  );
                  console.error(e);
@@ -60,11 +60,11 @@ export class DataBaseService {
                this.sqlPorter.importSqlToDb(this.dataBase, sql)
                  .then(async (_) => {
                    // Informar que la base de datos está lista
-                   alert('xxxx-3 ');
+                   console.log('xxxx-3 ');
                     this.cargarAsistencia();
-                    alert('xxxx-4 ');
+                    console.log('xxxx-4 ');
                    this.dbReady.next(true);
-                   alert('xxxx-5 ');
+                   console.log('xxxx-5 ');
                  }).catch(e => {
                    alert('Error al importar la base de datos');
                    console.error(e);
@@ -115,7 +115,7 @@ export class DataBaseService {
               });
             }
             updateAsistencia(fecha, asignatura,profesor,hora,id) {
-              alert('Actualiza '+id);
+              console.log('Actualiza'+id);
               let data = [fecha, asignatura,profesor,hora,id];
               return this.dataBase.executeSql('UPDATE asistencia SET fecha=?, asignatura=?, profesor=?, hora=? WHERE id=?', data)
               .then(res => {
@@ -124,7 +124,7 @@ export class DataBaseService {
             }
           
            deleteAsistencia(id) {
-              alert('Delete '+id);
+            console.log('Delete'+id);
               let data = [ id];
               return this.dataBase.executeSql('DELETE FROM asistencia  WHERE id=?', data)
               .then(res => {

@@ -1,24 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Encuentra a tu profesor</ion-title>
+    <ion-title>Contacta a tus profesores</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref='/inicio'>Volver sin cambios</ion-back-button>
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen] = "true">
+<ion-content>
   <ion-title>Listado de Profesores</ion-title>
   <ion-list *ngFor="let dato of datosObservable | async">
-    <ion-item>
-      {{ dato.id}} {{ dato.name}}
+    <ion-item  [routerLink]="['./', dato.id]">
+      <ion-card>
+        <ion-label><h1>{{ dato.id}} {{ dato.name}}</h1></ion-label>
+        <ion-label><h2>Email: {{dato.email}}</h2></ion-label>
+        <ion-label><h2>Telefono: {{dato.phone}}</h2></ion-label>
+      </ion-card>
+
     </ion-item>
   </ion-list>
-
-  <ion-row class="ion-align-items-center">
-    <ion-col size="12" class="ion-text-center">
-      <ion-button routerLink="/inicio" routerDirection="back">Volver a home</ion-button>
-    </ion-col>
-  </ion-row>
 
 </ion-content>

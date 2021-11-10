@@ -27,12 +27,12 @@ export class RestService {
   }
 
   getDatosUserId(id){
-    let stringUrl = this.baseUrl + 'userId = ' +id;
+    let stringUrl = this.baseUrl + 'detalleId = ' +id;
     alert("--->"+stringUrl);
     return this.httpClient.get(stringUrl);
   }
 
-  getDatosPos(id):Observable<Dato>{
+  getDatosProfe(id):Observable<Dato>{
     let stringUrl = this.baseUrl + '/'+id;
     alert("--->"+stringUrl);
     return this.httpClient.get<Dato>(stringUrl);

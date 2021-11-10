@@ -27,9 +27,11 @@ const routes: Routes = [
         loadChildren: () => import('./asistencias/detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
       },  
     ]
-  },  {
+  },
+  {
     path: 'list-profe',
-    loadChildren: () => import('./list-profe/list-profe.module').then( m => m.ListProfePageModule)
+        loadChildren: () => import('./list-profe/list-profe.module').then( m => m.ListProfePageModule)
+
   },
 
 ];
