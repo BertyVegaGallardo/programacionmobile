@@ -42,6 +42,19 @@ export class DataBaseService {
              .then((db: SQLiteObject) => {
               console.log('xxxx-2');
                this.dataBase = db;
+               this.dataBase.executeSql('SELECT * FROM asistencia ', []).then(
+                _=>{
+                  this.cargarAsistencia();
+      
+                  this.dbReady.next(true);
+      
+                }
+                ).catch(e=>{
+                  this.crearTablas();
+                }
+                );
+
+               
                this.crearTablas();
                console.log('xxxx-1 ');
                }).catch(e =>{
