@@ -33,6 +33,11 @@ const routes: Routes = [
         loadChildren: () => import('./list-profe/list-profe.module').then( m => m.ListProfePageModule)
 
   },
+  {
+    path: 'maps',
+    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
+  },
+
 
 ];
 
