@@ -15,7 +15,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { DataBaseService } from './services/data-base.service';
 import {RestService} from './services/rest.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,7 +33,9 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     SQLite,
     SQLitePorter,
     RestService,
-    ],
+    AppRoutingModule,
+    Geolocation,  
+  ],
     
   bootstrap: [AppComponent],
 })

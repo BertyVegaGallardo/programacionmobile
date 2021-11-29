@@ -25,7 +25,17 @@ export class MenuPage implements OnInit {
       titulo: 'Encuentra tu profesor',
       url: '/menu/list-profe',
       icono: 'person'
-    }
+    },
+    {
+      titulo: 'Geolocalizacion',
+      url: '/menu/maps',
+      icono: 'locate'
+    },
+    {
+      titulo: 'GoogleMaps',
+      url: '/menu/map',
+      icono: 'locate'
+    },
   ]
 
   constructor(public alertCtrl: AlertController, public navCtrl :  NavController) { }
