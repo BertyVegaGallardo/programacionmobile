@@ -101,7 +101,10 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
-      "cordova-plugin-googlemaps": {}
+      "cordova-plugin-googlemaps": {},
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      }
     },
     "platforms": [
       "android",

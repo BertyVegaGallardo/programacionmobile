@@ -12,31 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
-  {
-    path: 'asistencias',
-    children:[
-      {
-        path: '',
-        loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
-      },
-      {
-        path: ':asistenciaId',
-        loadChildren: () => import('./asistencias/detalle-asistencia/detalle-asistencia.module').then( m => m.DetalleAsistenciaPageModule)
-      },  
-    ]
-  },
-  {
-    path: 'list-profe',
-        loadChildren: () => import('./list-profe/list-profe.module').then( m => m.ListProfePageModule)
 
-  },
-  {
-    path: 'maps',
-    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
-  },
 
 
 ];

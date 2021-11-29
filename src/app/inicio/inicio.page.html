@@ -2,7 +2,7 @@
    <ion-toolbar>
     <ion-title>Volver atrás</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref='/home'></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -20,21 +20,19 @@
       <ion-row>
        <ion-col>
          <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
-         <ion-button expand= "block" routerLink="../asistencias" routerDirection="forward">Asistencia</ion-button> 
+         <ion-button expand= "block" routerLink="/menu//asistencias" routerDirection="forward">Asistencia</ion-button> 
        </ion-col>
        <ion-col> 
         <ion-button expand ="block" routerLink="/home" routerDirection="forward">Cerrar sesión</ion-button> 
         <!-- crear un boton que va a un link (interno en este caso) redireccionando la pagina-->
       </ion-col>
       <ion-col> 
-        <ion-button expand ="block" routerLink="/list-profe" routerDirection="forward">Listado Profesores</ion-button> 
+        <ion-button expand ="block" routerLink="/menu/list-profe" routerDirection="forward">Listado Profesores</ion-button> 
         <!-- crear un boton que va a un link (interno en este caso) redireccionando la pagina-->
       </ion-col>
      </ion-row>
     </ion-grid>
   </ion-card-content>
 
-
-  
 
 </ion-content>

@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Mapa</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      Tu posición actual es: Latitud: {{latitude}} - Longitud: {{longitude}} 
+      Su posición actual es: Latitud: {{latitude}} - Longitud: {{longitude}}
     </ion-card-header>
   </ion-card>
 
@@ -20,11 +23,7 @@
     <ion-input type="text" [(ngModel)]="coordinates.longitude"></ion-input>
   </ion-item>
 
-  <ion-row>
-    <ion-col>
-      <ion-button expand="full" (click)="showMap()">Ingresar</ion-button>
-    </ion-col>
-  </ion-row>
+
 
   <div #map id="map"></div>
 </ion-content>

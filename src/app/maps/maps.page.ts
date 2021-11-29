@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+import { ActivatedRoute , Router, NavigationExtras } from '@angular/router';
 declare var google: any;
 
 
@@ -9,9 +10,6 @@ declare var google: any;
   styleUrls: ['./maps.page.scss'],
 })
 export class MapsPage implements OnInit {
-
-
-
   map: any;
   currentPostion: object;
   latitude: number;
@@ -24,7 +22,7 @@ export class MapsPage implements OnInit {
 
   @ViewChild("maps", {read: ElementRef, static: false}) mapRef: ElementRef;
 
-  constructor(public geolocation:Geolocation) {
+  constructor(public geolocation:Geolocation,public activatedRoute: ActivatedRoute, public router : Router) {
 
     this.geolocation.getCurrentPosition().then((geoposition:Geoposition) => {
       this.latitude = geoposition.coords.latitude;

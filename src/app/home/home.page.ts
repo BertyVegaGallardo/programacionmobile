@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
     if(this.validateModel(this.user)){
       this.usuarioServiceS=this.usuarioService.getUsuario(this.user.usuario);
       if(this.usuarioService.getUsuario(this.user.usuario).password === this.user.password){
-        this.router.navigate(['/inicio'],navigationExtras); // navegamos hacia el inicio y enviamos información adicional
+        this.router.navigate(['/menu/inicio'],navigationExtras); // navegamos hacia el inicio y enviamos información adicional
       }else{
         this.presentToast('Usuario o password no validos');
       }
