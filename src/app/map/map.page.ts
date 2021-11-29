@@ -52,7 +52,7 @@ export class MapPage implements OnInit {
         // Mostrar marcador de posicion
         let marker: Marker = this.map.addMarkerSync({
           title: "Estoy aquí!",
-          snippet: "This plugin is awesome!",
+          snippet: "Esta es tu ubicacion actual",
           position: location.latLng,
           animation: GoogleMapsAnimation.BOUNCE
         });

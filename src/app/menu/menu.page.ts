@@ -35,7 +35,7 @@ export class MenuPage implements OnInit {
       titulo: 'GoogleMaps',
       url: '/menu/map',
       icono: 'locate'
-    }
+    },
   ]
 
   constructor(public alertCtrl: AlertController, public navCtrl :  NavController) { }

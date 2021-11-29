@@ -20,17 +20,6 @@ declare var google: any;
   declarations: [MapsPage]
 })
 export class MapsPageModule {
-    
-    maps: any;
-
-@ViewChild("maps", {read:ElementRef, static:false}) mapRef: ElementRef;
-
-constructor () {}
-
-showMap()
-{
-  const location = new google.maps.LatLng(17.824858, 31.052838)
-}
 
   
 }

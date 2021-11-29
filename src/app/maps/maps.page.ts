@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { ActivatedRoute , Router, NavigationExtras } from '@angular/router';
+import {GoogleMaps,GoogleMap,GoogleMapsEvent,Marker,GoogleMapsAnimation,MyLocation } from '@ionic-native/google-maps';
+import { LoadingController, Platform, ToastController } from '@ionic/angular';
 declare var google: any;
 
 
@@ -10,7 +12,10 @@ declare var google: any;
   styleUrls: ['./maps.page.scss'],
 })
 export class MapsPage implements OnInit {
-  map: any;
+
+  map: GoogleMap;
+  loading: any;
+
   currentPostion: object;
   latitude: number;
   longitude: number;
@@ -20,9 +25,7 @@ export class MapsPage implements OnInit {
     longitude: 0
   };
 
-  @ViewChild("maps", {read: ElementRef, static: false}) mapRef: ElementRef;
-
-  constructor(public geolocation:Geolocation,public activatedRoute: ActivatedRoute, public router : Router) {
+  constructor(public toastCtrl: ToastController,public loadingCtrl: LoadingController,public geolocation:Geolocation,public activatedRoute: ActivatedRoute, public router : Router,private platform: Platform) {
 
     this.geolocation.getCurrentPosition().then((geoposition:Geoposition) => {
       this.latitude = geoposition.coords.latitude;
@@ -31,41 +34,61 @@ export class MapsPage implements OnInit {
     
    }
 
-  ionViewDidEnter()
-  {
-    this.showMap();
+
+
+  async ngOnInit() {
+    await this.platform.ready();
+    await this.loadMap();
   }
 
-  showMap()
-  {
-    if(this.coordinates.latitude == 0)
-    {
-      this.geolocation.getCurrentPosition().then((geoposition:Geoposition) => {
-        const location = new google.maps.LatLng(geoposition.coords.latitude, geoposition.coords.longitude)
-        const options = {
-          center: location, 
-          zoom: 17,
-          disableDefaultUI: true
-        }
-  
-      this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-      })
-    }
-    else
-    {
-      const location = new google.maps.LatLng(this.coordinates.latitude, this.coordinates.longitude)
-      const options = {
-        center: location, 
-        zoom: 17,
-        disableDefaultUI: true
+  loadMap() {
+    this.map = GoogleMaps.create("map_canvas", {
+      camera: {
+        target: {
+          lat: -2.1537488,
+          lng: -79.8883037
+        },
+        zoom: 18,
+        tilt: 30
       }
-  
-      this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-    }
-    
+    });
   }
 
-  ngOnInit() {
+  async localizar() {
+    // Limpiar elementos de mapa
+    this.map.clear();
+    //Msj de espera
+    this.loading = await this.loadingCtrl.create({
+      message: "Espera por favor..."
+    });
+    await this.loading.present();
+    this.map.getMyLocation().then((location: MyLocation) => {
+        //sacar msj de carga
+        this.loading.dismiss();
+        //animación
+        this.map.animateCamera({
+          target: location.latLng,
+          zoom: 17,
+          tilt: 30
+        })
+        // Mostrar marcador de posicion
+        let marker: Marker = this.map.addMarkerSync({
+          title: "Estoy aquí!",
+          snippet: "Esta es tu ubicacion actual",
+          position: location.latLng,
+          animation: GoogleMapsAnimation.BOUNCE
+        });
+        marker.showInfoWindow();
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+          this.showToast("clicked!");
+        });
+      })
+      .catch(error => {
+        // En caso de que haya un problema en obtener la
+        // ubicación
+        this.loading.dismiss();
+        this.showToast(error.error_message);
+      });
   }
 
   validateModel(model: any){
@@ -80,7 +103,16 @@ export class MapsPage implements OnInit {
     return true;
   }
 
+    // Función que muestra un Toast en la parte inferior
+  // de la pantalla
+  async showToast(mensaje) {
+    let toast = await this.toastCtrl.create({
+      message: mensaje,
+      duration: 2000,
+      position: "bottom"
+    });
+
+    toast.present();
+  }
+
 }
-
-
-
